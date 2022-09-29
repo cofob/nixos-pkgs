@@ -1,5 +1,7 @@
 { pkgs ? import <nixpkgs> { } }:
+
 {
+  # cockroachdb = pkgs.callPackage ./pkgs/cockroachdb { };
   deta = pkgs.callPackage ./pkgs/deta { };
   infrared = pkgs.callPackage ./pkgs/infrared { };
   proxmox-backup = pkgs.callPackage ./pkgs/proxmox-backup { };
