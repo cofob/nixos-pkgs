@@ -5,7 +5,7 @@
 
 pkgs.stdenv.mkDerivation rec {
   pname = "UltimMC";
-  version = "0.6.11";
+  version = "0.6.12";
   desktopItem = (pkgs.makeDesktopItem {
     name = pname;
     desktopName = "Minecraft";
@@ -15,19 +15,15 @@ pkgs.stdenv.mkDerivation rec {
   });
 
   src = pkgs.fetchFromGitHub {
-    owner = "UltimMC";
-    repo = "Launcher";
-    rev = version;
-    sha256 = "sha256-v35tOfi1F7cz4MEwprpOGO47b2o70OJGami6p8mqa8o=";
+    owner = "cofob";
+    repo = "UltimMC";
+    rev = "9575ba078b603f0fe05723220cbbf56e1623f24f";
+    sha256 = "sha256-nPIivZSFTbIvZxhq0hmW4j/6NXtRpwS+prdwqcyalHY=";
     fetchSubmodules = true;
   };
 
   nativeBuildInputs = with pkgs; [ cmake file makeWrapper ];
   buildInputs = with pkgs; [ qt5.qtbase jdk zlib ];
-
-  patches = [
-    ./0001-Use-local-path-if-no-dir-arg-specified.patch
-  ];
 
   postPatch = ''
     # hardcode jdk paths
